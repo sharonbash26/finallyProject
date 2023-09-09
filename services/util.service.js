@@ -6,6 +6,8 @@ export const utilService = {
     padNum,
     getDayName,
     getMonthName,
+    formatTime,
+    parseClassName
 }
 
 function makeId(length = 6) {
@@ -60,3 +62,14 @@ function getMonthName(date) {
     ]
     return monthNames[date.getMonth()]
 }
+
+function formatTime(timestamp) {
+    const date = new Date(timestamp)
+    const hours = String(date.getHours()).padStart(2, '0')
+    const minutes = String(date.getMinutes()).padStart(2, '0')
+    return `${hours}:${minutes}`
+  }
+
+  function parseClassName(...classNames) {
+    return [...classNames].filter(Boolean).join(' ')
+  }
